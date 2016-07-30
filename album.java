@@ -1,4 +1,4 @@
-
+//Importing swing packages for GUI
 import java.awt.*;
 import java.util.*;
 import java.io.*;
@@ -7,31 +7,35 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.lang.*;
 
+//Class for Album (Frame)
 public class album extends JFrame{
-
+	// Components of the frame
+       // Can store upto 10 photos
 	public JButton x[]=new JButton[10];
 	public JLabel y[]=new JLabel[10];
 	public int z,z1;
 	public JLabel lblNoImagesTo;
 	
+	// Class constructor
 	public album()
 	{    super("PHOTO ALBUM");
-    getContentPane().setLayout(null);
-    Font pf2=new Font("Serif",Font.ITALIC,27);
-    Font pf3=new Font("Serif",Font.ITALIC,19);
-    JButton btnNewButton = new JButton("ADD NEW PHOTO");
-    btnNewButton.addActionListener(new ActionListener() {
-    	public void actionPerformed(ActionEvent arg0) {
+             getContentPane().setLayout(null);
+             Font pf2=new Font("Serif",Font.ITALIC,27);
+             Font pf3=new Font("Serif",Font.ITALIC,19);
+            
+            //Button to add new photo
+            JButton btnNewButton = new JButton("ADD NEW PHOTO");
+            btnNewButton.addActionListener(new ActionListener() {
+    	     public void actionPerformed(ActionEvent arg0) {
     		
     		if(imagelist.images.size()>=10){
-    			
     			JOptionPane.showMessageDialog(null,"                    Sorry !!\n You can't upload more than 10 pictures !! ");
     		}
     		
-    	else{
-    		setVisible(false);
-          newphoto piq=new newphoto();
-          piq.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	  else{
+    		 setVisible(false);
+                 newphoto piq=new newphoto();   // Move to the respective photo's frame
+                 piq.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   		  piq.setSize(870,371);
   		  piq.setVisible(true);
     	}
@@ -42,6 +46,7 @@ public class album extends JFrame{
     btnNewButton.setBounds(472, 809, 458, 51);
     getContentPane().add(btnNewButton);
     
+    // Button to exit the program
     JButton btnNewButton_1 = new JButton("EXIT PHOTO ALBUM");
     btnNewButton_1.addActionListener(new ActionListener() {
     	public void actionPerformed(ActionEvent e) {
@@ -52,29 +57,25 @@ public class album extends JFrame{
     btnNewButton_1.setBounds(36, 809, 397, 51);
     getContentPane().add(btnNewButton_1);
     
+    // Label of the frame
     JLabel label = new JLabel("CLICK ON THE IMAGE TO VIEW IT IN FULL SCREEN:");
     label.setBounds(37, 32, 800, 50);
     getContentPane().add(label);
     label.setFont(pf2);
 
 		
-		 
-		
-		
-		
 		if(imagelist.images.size()==0)
 		{
-	    lblNoImagesTo = new JLabel("No images to display currently..");
+	        lblNoImagesTo = new JLabel("No images to display currently..");
 		lblNoImagesTo.setBounds(254, 308, 700, 58);
 		getContentPane().add(lblNoImagesTo);
 		lblNoImagesTo.setFont(pf2);
 			
 		}
 		
-		else{
+		else{   // Display all the existing photos
 			  int x1=62; int y1=150;
 			   
-			
 			for(z=0;z<imagelist.images.size();z++)
 			{
 				if(z==4||z==8)
@@ -101,9 +102,6 @@ public class album extends JFrame{
 			    getContentPane().add(y[z]);
 			    y[z].setFont(pf3);
 			    
-			   // x[z].setIcon(pic);
-			   
-			    
 			    x1=x1+245;
 			}
 		
@@ -114,7 +112,7 @@ public class album extends JFrame{
 		 x[0].addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent e) {
 		    		
-		    		setVisible(false);
+		    		setVisible(false);     // Move to the image's frame
 		    		openphoto op=new openphoto(imagelist.images.get(0));
 		    		op.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    		op.setSize(1248,1025);
@@ -122,7 +120,7 @@ public class album extends JFrame{
 		    	}
 		 });
 	     }
-	     
+	       // Display the photos
 	     if(x[1]!=null){
 			 x[1].addActionListener(new ActionListener() {
 			    	public void actionPerformed(ActionEvent e) {
@@ -233,8 +231,7 @@ public class album extends JFrame{
 			    	}
 			 });
 		     }
-	     
-		
 	}//end of constructor
+	
 }//end of class
 
