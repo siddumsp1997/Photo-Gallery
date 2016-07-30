@@ -1,8 +1,9 @@
+// Importing required packages
 import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-
+// Class to handle the photos
 public class fileclass {
 
 	File file;
@@ -10,12 +11,10 @@ public class fileclass {
 	BufferedReader br;
 	PrintStream fileStream;
 	
-	
+	// Class constructor
 	public fileclass(ArrayList<image> m)throws Exception
 	{    int flag=1;
 	    
-	
-
 		try {
 
 			file = new File("image database.txt");
@@ -26,7 +25,6 @@ public class fileclass {
 				file.createNewFile();
 		    }
 			
-			
 			else
 			{
 				fr=new FileReader("image database.txt");
@@ -35,7 +33,7 @@ public class fileclass {
 				String line;
 				
 				while((line=br.readLine())!=null)
-				{   
+				{       // Reading the details of every photo from the text file
 					
 					image x=new image();
 					x.location=line;
@@ -45,15 +43,11 @@ public class fileclass {
 					x.annotation=line;
 					m.add(x);
 				
-					
-	
 				} //end of while	
 				
 			}
 			//end of retrieving data from the file (else)
 			
-			 
-			 
 		} //end of try
 		 
 		 catch (IOException e) {
@@ -66,10 +60,9 @@ public class fileclass {
 	//function to update file
 		public void updatefile(ArrayList<image> m)throws Exception 
 		{    
-			
-			 
-			  fileStream = new PrintStream("image database.txt");
+			  fileStream = new PrintStream("image database.txt"); // Opening the text file 
 			  
+			  //Updating all the changes made, to the text file
 			 if(m!=null){
 			  for(image r:m)
 			  {
@@ -86,9 +79,7 @@ public class fileclass {
 				     
 		}//end of updatefile	     
 	
-	
-	
-	
+	//Function to close the text file
      public void closefile()throws Exception
 	
 	{   if(fr!=null&&br!=null){
@@ -97,3 +88,4 @@ public class fileclass {
 	    }
 	}
 }
+//End of file class
