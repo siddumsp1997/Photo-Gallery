@@ -1,2 +1,2 @@
 # Photo-Gallery
-A digital Photo Gallery using Swing
+A Digital Photo Gallery using Swing
