@@ -1,2 +1,2 @@
-# Photo-album
-A digital photo album
+# Photo-Gallery
+A digital Photo Gallery using Swing
